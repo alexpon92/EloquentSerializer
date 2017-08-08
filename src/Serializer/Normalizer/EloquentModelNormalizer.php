@@ -144,7 +144,7 @@ class EloquentModelNormalizer extends ObjectNormalizer
                 continue;
             }
 
-            $object->setAttribute($relation->getForeignKey(), $value);
+            //$object->setAttribute($relation->getForeignKey(), $value);
         }
 
         return $object;
