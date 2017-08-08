@@ -90,8 +90,10 @@ class EloquentModelNormalizer extends ObjectNormalizer
         /* @var EloquentModel[] $relations */
         $relations = $object->getRelations();
         foreach ($relations as $relationName => $relation) {
-            unset($attributes[$relation->getForeignKey()]);
-            $attributes[$relationName] = true;
+            if (!is_null($relation)) {
+                unset($attributes[$relation->getForeignKey()]);
+                $attributes[$relationName] = true;
+            }
         }
 
         $attributes = array_diff_key($attributes, array_flip($object->getHidden()));
