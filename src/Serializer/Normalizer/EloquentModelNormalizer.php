@@ -120,6 +120,9 @@ class EloquentModelNormalizer extends ObjectNormalizer
             if ($object->hasSetMutator($date)) {
                 continue;
             }
+            if (is_null($value)) {
+                continue;
+            }
 
             $data[$date] = $this->serializer->denormalize($value, \DateTimeInterface::class, $format);
         }
